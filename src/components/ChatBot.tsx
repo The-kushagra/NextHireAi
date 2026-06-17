@@ -91,7 +91,7 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "size-14 rounded-full bg-gradient-to-br from-purple-600 to-indigo-700 text-white shadow-xl shadow-purple-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-subtle",
+          "size-14 rounded-full bg-primary text-white flex items-center justify-center transition-all duration-300 hover:bg-[#0EA371] active:scale-95",
           isOpen && "rotate-90 scale-0 opacity-0"
         )}
       >
@@ -101,22 +101,22 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
       {/* Chat Panel */}
       <div
         className={cn(
-          "fixed bottom-6 right-6 w-[400px] h-[600px] max-w-[calc(100vw-48px)] max-h-[calc(100vh-48px)] flex flex-col bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 origin-bottom-right sm:w-[400px] w-[calc(100vw-32px)] sm:bottom-6 sm:right-6 bottom-4 right-4",
+          "fixed bottom-6 right-6 w-[400px] h-[600px] max-w-[calc(100vw-48px)] max-h-[calc(100vh-48px)] flex flex-col bg-card border border-border rounded-lg shadow-sm overflow-hidden transition-all duration-500 origin-bottom-right sm:w-[400px] w-[calc(100vw-32px)] sm:bottom-6 sm:right-6 bottom-4 right-4",
           isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-0 opacity-0 translate-y-10 pointer-events-none"
         )}
       >
         {/* Header */}
-        <div className="p-6 border-b border-white/5 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 flex items-center justify-between">
+        <div className="p-6 border-b border-border bg-card flex items-center justify-between">
           <div>
             <h3 className="text-lg font-black text-white flex items-center gap-2">
-              <span className="text-gradient-purple">NextHire</span> AI
-              <Sparkles className="size-4 text-purple-400" />
+              <span className="text-white">NextHire</span> AI
+              <Sparkles className="size-4 text-muted-foreground" />
             </h3>
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Powered by Groq</p>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Powered by Groq</p>
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="size-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+            className="size-8 rounded-md bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[#1F2530] transition-all"
           >
             <X className="size-4" />
           </button>
@@ -125,7 +125,7 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
         {/* Messages */}
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.05),transparent_50%)]"
+          className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide bg-card"
         >
           {messages.map((msg, i) => (
             <div
@@ -137,10 +137,10 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
             >
               <div
                 className={cn(
-                  "p-4 rounded-2xl text-sm leading-relaxed",
+                  "p-4 rounded-lg text-sm leading-relaxed",
                   msg.role === "user" 
-                    ? "bg-primary text-white font-medium rounded-tr-none shadow-lg shadow-primary/10" 
-                    : "bg-slate-800/80 border border-white/5 text-slate-200 rounded-tl-none"
+                    ? "bg-[#1F2530] border border-[#2A3447] text-white font-medium rounded-tr-none" 
+                    : "bg-[#11151F] border border-border text-slate-300 rounded-tl-none"
                 )}
               >
                 {msg.content === "" && msg.role === "assistant" ? (
@@ -158,7 +158,7 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
         </div>
 
         {/* Input */}
-        <div className="p-4 bg-slate-900/50 backdrop-blur-xl border-t border-white/5">
+        <div className="p-4 bg-card border-t border-border">
           <form 
             onSubmit={(e) => { e.preventDefault(); handleSend(); }}
             className="relative flex items-center"
@@ -168,11 +168,11 @@ export function ChatBot({ role }: { role: 'recruiter' | 'candidate' }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
-              className="w-full bg-slate-800 border border-white/10 rounded-2xl px-5 py-3.5 pr-14 text-sm text-white focus:outline-none focus:border-primary/50 transition-all placeholder:text-slate-600"
+              className="w-full bg-[#1F2530] border border-border rounded-lg px-5 py-3.5 pr-14 text-sm text-white focus:outline-none focus:border-primary transition-all placeholder:text-muted-foreground"
             />
             <button
               disabled={!input.trim() || isLoading}
-              className="absolute right-2 size-10 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 disabled:opacity-50 disabled:hover:bg-primary transition-all active:scale-95"
+              className="absolute right-2 size-10 rounded-lg bg-primary text-white flex items-center justify-center hover:bg-[#0EA371] disabled:opacity-50 disabled:hover:bg-primary transition-all active:scale-95"
             >
               {isLoading ? <Loader2 className="size-5 animate-spin" /> : <Send className="size-5" />}
             </button>

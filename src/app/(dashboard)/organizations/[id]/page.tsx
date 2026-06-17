@@ -22,11 +22,11 @@ export default async function OrganizationPage({ params }: { params: Promise<{ i
     <div className="container mx-auto py-10 space-y-8 px-6">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="flex items-center gap-6">
-          <div className="size-20 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-xl overflow-hidden border border-white/10">
+          <div className="size-20 rounded-lg bg-[#1F2530] flex items-center justify-center text-white overflow-hidden border border-border">
             {organization.imageUrl ? (
               <img src={organization.imageUrl} alt={organization.name} className="object-cover w-full h-full" />
             ) : (
-              <Building2 className="size-10" />
+              <Building2 className="size-10 text-muted-foreground" />
             )}
           </div>
           <div className="space-y-1">
@@ -36,13 +36,13 @@ export default async function OrganizationPage({ params }: { params: Promise<{ i
         </div>
         
         <div className="flex items-center gap-3">
-          <Button asChild variant="outline" className="gap-2 font-bold bg-white/5 border-white/10 hover:bg-white/10">
+          <Button asChild variant="outline" className="gap-2 font-bold">
             <Link href={`/organizations/${id}/settings`}>
-              <Settings className="size-4 text-slate-400" />
+              <Settings className="size-4 text-muted-foreground" />
               Settings
             </Link>
           </Button>
-          <Button asChild className="gap-2 font-black shadow-lg shadow-primary/20">
+          <Button asChild className="gap-2 font-black">
             <Link href={`/organizations/${id}/jobs`}>
               <BriefcaseBusiness className="size-4" />
               Manage Jobs
@@ -52,17 +52,17 @@ export default async function OrganizationPage({ params }: { params: Promise<{ i
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 pt-8">
-        <Card className="bg-slate-800/40 border-white/5 shadow-xl">
+        <Card>
           <CardHeader>
             <CardTitle className="text-sm font-black uppercase tracking-widest text-slate-400">Company Profile</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
              <div className="space-y-1">
-                <p className="text-xs font-bold text-primary uppercase">Official Name</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase">Official Name</p>
                 <p className="text-white font-medium">{organization.name}</p>
              </div>
              <div className="space-y-1">
-                <p className="text-xs font-bold text-primary uppercase">Organization ID</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase">Organization ID</p>
                 <p className="text-slate-400 font-mono text-xs truncate">{organization.id}</p>
              </div>
           </CardContent>

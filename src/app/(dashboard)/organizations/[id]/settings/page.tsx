@@ -31,39 +31,39 @@ export default async function OrganizationSettingsPage({ params }: { params: Pro
     <div className="container mx-auto py-10 space-y-10 px-6">
       <div className="space-y-1">
         <h1 className="text-3xl font-black text-white tracking-tight">Organization Settings</h1>
-        <p className="text-slate-400 font-medium italic">Manage your profile and configuration for {organization.name}</p>
+        <p className="text-muted-foreground font-medium italic">Manage your profile and configuration for {organization.name}</p>
       </div>
 
       <div className="grid gap-8">
-        <Card className="bg-slate-800/40 border-white/5 shadow-xl">
+        <Card>
           <CardHeader>
             <CardTitle className="text-white font-bold">General Information</CardTitle>
-            <CardDescription className="text-slate-400">Basic details about your organization profile.</CardDescription>
+            <CardDescription>Basic details about your organization profile.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
              <div className="space-y-1.5">
-                <label className="text-xs font-black text-primary uppercase tracking-widest">Organization Name</label>
+                <label className="text-xs font-black text-muted-foreground uppercase tracking-widest">Organization Name</label>
                 <p className="text-lg text-white font-medium">{organization.name}</p>
              </div>
-             <div className="space-y-1.5">
-                <label className="text-xs font-black text-primary uppercase tracking-widest">Unique Identifier</label>
-                <p className="text-slate-400 font-mono text-sm">{organization.id}</p>
-             </div>
+              <div className="space-y-1.5">
+                 <label className="text-xs font-black text-muted-foreground uppercase tracking-widest">Unique Identifier</label>
+                 <p className="text-muted-foreground font-mono text-sm">{organization.id}</p>
+              </div>
           </CardContent>
         </Card>
 
         {canDelete && (
-          <Card className="border-destructive/20 bg-destructive/5 shadow-xl overflow-hidden">
+          <Card className="border-destructive/20 bg-destructive/5 overflow-hidden">
             <CardHeader className="bg-destructive/10 border-b border-destructive/20">
               <CardTitle className="text-destructive font-black">Danger Zone</CardTitle>
               <CardDescription className="text-destructive/70 font-medium">Irreversible actions for your organization.</CardDescription>
             </CardHeader>
             <CardContent className="py-6">
                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                  <div className="space-y-1">
-                     <p className="text-white font-bold">Delete Organization</p>
-                     <p className="text-slate-500 text-sm">Once deleted, all jobs, applications, and data will be permanently removed.</p>
-                  </div>
+                   <div className="space-y-1">
+                      <p className="text-white font-bold">Delete Organization</p>
+                      <p className="text-muted-foreground text-sm">Once deleted, all jobs, applications, and data will be permanently removed.</p>
+                   </div>
                   <DeleteOrganizationButton organizationId={id} />
                </div>
             </CardContent>

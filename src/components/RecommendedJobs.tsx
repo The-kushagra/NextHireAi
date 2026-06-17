@@ -19,16 +19,16 @@ type Recommendation = {
 }
 
 function getScoreClass(score: number) {
-  if (score >= 80) return "bg-gradient-to-r from-purple-600 to-teal-500 text-white shadow-lg shadow-teal-500/20";
-  if (score >= 60) return "bg-gradient-to-r from-purple-800 to-indigo-600 text-white opacity-90";
-  return "bg-slate-800 text-slate-400";
+  if (score >= 80) return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+  if (score >= 60) return "bg-amber-500/10 text-amber-400 border-amber-500/30";
+  return "bg-muted text-muted-foreground border-border";
 }
 
 function LoadingSkeleton() {
   return (
     <div className="space-y-4">
       {[1, 2, 3].map((i) => (
-        <div key={i} className="rounded-2xl border border-white/5 bg-slate-800/50 p-6">
+        <div key={i} className="rounded-lg border border-border bg-card p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-3 flex-1">
               <Skeleton className="h-6 w-3/5 bg-slate-700" />
@@ -45,8 +45,8 @@ function LoadingSkeleton() {
 
 function NoResumeMessage() {
   return (
-    <div className="rounded-3xl border-2 border-dashed border-white/5 bg-slate-800/30 p-12 flex flex-col items-center justify-center text-center space-y-6">
-      <div className="size-20 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+    <div className="rounded-lg border border-dashed border-border bg-card p-12 flex flex-col items-center justify-center text-center space-y-6">
+      <div className="size-20 rounded-lg bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
         <FileText className="size-10 text-amber-500" />
       </div>
       <div className="max-w-xs">
@@ -101,7 +101,7 @@ export function RecommendedJobs() {
 
   if (error) {
     return (
-      <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-8 text-center">
+      <div className="rounded-lg border border-red-500/20 bg-red-500/10 p-8 text-center">
         <p className="text-red-400 font-bold">{error}</p>
       </div>
     )
@@ -109,8 +109,8 @@ export function RecommendedJobs() {
 
   if (recommendations.length === 0) {
     return (
-      <div className="rounded-2xl border border-white/5 bg-slate-800/30 p-12 text-center">
-        <p className="text-slate-400 font-medium font-lg">
+      <div className="rounded-lg border border-border bg-card p-12 text-center">
+        <p className="text-muted-foreground font-medium font-lg">
           No matches found for your skill set yet. Keep looking!
         </p>
       </div>
@@ -123,30 +123,30 @@ export function RecommendedJobs() {
         <Link
           key={rec.id}
           href={`/jobs/${rec.id}`}
-          className="group block relative rounded-2xl border border-white/5 bg-slate-800/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-slate-800 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden"
+          className="group block relative rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary overflow-hidden"
         >
           <div className="flex items-start justify-between gap-6">
             <div className="flex-1 min-w-0 space-y-3">
               <div className="flex items-center gap-3">
                 {index === 0 && (
-                   <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-black uppercase text-emerald-400">
+                   <Badge variant="match" className="gap-1">
                       <TrendingUp className="size-3" />
                       Top Match
-                   </div>
+                   </Badge>
                 )}
                 <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">{rec.company}</span>
               </div>
               
-              <h4 className="font-black text-xl text-white group-hover:text-primary transition-colors leading-tight">
+              <h4 className="font-black text-xl text-white group-hover:text-foreground transition-colors leading-tight">
                 {rec.title}
               </h4>
               
-              <div className="flex flex-wrap gap-2 items-center text-xs font-semibold text-slate-400">
+              <div className="flex flex-wrap gap-2 items-center text-xs font-semibold text-muted-foreground">
                 {rec.location && (
-                  <span className="px-2 py-1 rounded-md bg-white/5 border border-white/5">{rec.location}</span>
+                  <span className="px-2 py-1 rounded-md bg-muted border border-border">{rec.location}</span>
                 )}
                 {rec.type && (
-                  <span className="px-2 py-1 rounded-md bg-white/5 border border-white/5 capitalize">{rec.type}</span>
+                  <span className="px-2 py-1 rounded-md bg-muted border border-border capitalize">{rec.type}</span>
                 )}
               </div>
               
@@ -159,10 +159,14 @@ export function RecommendedJobs() {
             </div>
             
             <div className={cn(
-              "shrink-0 px-4 py-2 rounded-xl font-black text-lg border border-white/10 transition-transform group-hover:scale-110",
+              "shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-black text-sm border transition-colors",
               getScoreClass(rec.matchScore)
             )}>
-              {rec.matchScore}%
+              <Sparkles className={cn(
+                "size-3.5",
+                rec.matchScore >= 80 ? "text-emerald-400" : rec.matchScore >= 60 ? "text-amber-400" : "text-muted-foreground"
+              )} />
+              <span>{rec.matchScore}%</span>
             </div>
           </div>
         </Link>

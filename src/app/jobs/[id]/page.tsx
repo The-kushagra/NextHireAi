@@ -44,7 +44,7 @@ export default async function JobDetailsPage({
 
       <div className="flex flex-col md:flex-row justify-between items-start gap-6">
         <div className="flex gap-6">
-          <div className="size-20 rounded-xl border bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+          <div className="size-20 rounded-lg border border-border bg-[#1F2530] flex items-center justify-center overflow-hidden shrink-0">
              {job.organization.imageUrl ? (
                 <img src={job.organization.imageUrl} alt={job.organization.name} className="object-cover" />
              ) : (
@@ -59,15 +59,15 @@ export default async function JobDetailsPage({
               </Link>
             </div>
             <div className="flex flex-wrap gap-2 pt-2">
-               <Badge variant="secondary" className="gap-1 bg-slate-800 text-slate-200 border-white/10">
-                 <MapPin className="size-3" /> {job.locationRequirement}
-               </Badge>
-               <Badge variant="secondary" className="gap-1 bg-slate-800 text-slate-200 border-white/10">
-                 <Clock className="size-3" /> {job.type}
-               </Badge>
-               <Badge variant="outline" className="gap-1 capitalize border-white/20 text-slate-300">
-                 {job.experienceLevel}
-               </Badge>
+                <Badge variant="secondary" className="gap-1">
+                  <MapPin className="size-3" /> {job.locationRequirement}
+                </Badge>
+                <Badge variant="secondary" className="gap-1">
+                  <Clock className="size-3" /> {job.type}
+                </Badge>
+                <Badge variant="outline" className="gap-1 capitalize">
+                  {job.experienceLevel}
+                </Badge>
             </div>
           </div>
         </div>
@@ -85,12 +85,12 @@ export default async function JobDetailsPage({
         </div>
 
         <aside className="space-y-6">
-          <div className="rounded-xl border border-[#334155] p-6 space-y-6 bg-[#1E293B] shadow-2xl">
+          <div className="rounded-lg border border-border p-6 space-y-6 bg-card">
             <h3 className="font-bold text-white uppercase tracking-widest text-xs opacity-70">Job Overview</h3>
             <div className="space-y-4">
               <div className="flex gap-3">
-                <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <DollarSign className="size-4 text-primary" />
+                <div className="size-8 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                  <DollarSign className="size-4 text-muted-foreground" />
                 </div>
                 <div>
                    <p className="text-xs font-black text-slate-500 uppercase tracking-tighter">Salary</p>
@@ -100,8 +100,8 @@ export default async function JobDetailsPage({
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="size-8 rounded-lg bg-teal-500/10 flex items-center justify-center shrink-0">
-                  <Calendar className="size-4 text-teal-400" />
+                <div className="size-8 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                  <Calendar className="size-4 text-muted-foreground" />
                 </div>
                 <div>
                    <p className="text-xs font-black text-slate-500 uppercase tracking-tighter">Posted</p>
@@ -111,8 +111,8 @@ export default async function JobDetailsPage({
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="size-8 rounded-lg bg-indigo-500/10 flex items-center justify-center shrink-0">
-                  <MapPin className="size-4 text-indigo-400" />
+                <div className="size-8 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                  <MapPin className="size-4 text-muted-foreground" />
                 </div>
                 <div>
                    <p className="text-xs font-black text-slate-500 uppercase tracking-tighter">Location</p>
@@ -122,12 +122,12 @@ export default async function JobDetailsPage({
             </div>
           </div>
 
-          <div className="rounded-xl border border-[#334155] p-6 space-y-4 bg-[#1E293B] shadow-2xl">
+          <div className="rounded-lg border border-border p-6 space-y-4 bg-card">
              <h3 className="font-bold text-white uppercase tracking-widest text-xs opacity-70">About {job.organization.name}</h3>
              <p className="text-sm text-slate-300 leading-relaxed">
                 We're a team of innovators building the future of technology. Join us to make a real impact.
-             </p>
-             <Button variant="outline" className="w-full font-bold border-white/10 hover:bg-white/5" asChild>
+              </p>
+             <Button variant="outline" className="w-full font-bold" asChild>
                 <Link href={`/organizations/${job.organizationId}`}>View Profile</Link>
              </Button>
           </div>

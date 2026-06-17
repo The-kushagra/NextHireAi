@@ -18,21 +18,19 @@ export default async function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground selection:bg-primary/30">
-      {/* Background patterns */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,58,237,0.1),transparent_50%)]" />
       
       <LandingNavbar userId={userId} />
 
       <main className="flex-1">
         <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-12 overflow-hidden">
           <div className="container px-6 text-center space-y-12 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold animate-in fade-in slide-in-from-top-4 duration-1000">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border text-muted-foreground text-sm font-bold animate-in fade-in slide-in-from-top-4 duration-1000">
               <Sparkles className="size-4" />
               <span>Next-Gen Hiring Experience</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.1]">
-              <span className="text-gradient-purple">AI-Powered</span> Recruitment, <br className="hidden md:block" /> Reimagined
+              AI-Powered Recruitment, <br className="hidden md:block" /> Reimagined
             </h1>
             
             <p className="mx-auto max-w-2xl text-slate-400 text-lg md:text-xl font-medium leading-relaxed">
@@ -50,7 +48,7 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="py-24 bg-slate-900/50 relative border-y border-white/5">
+        <section id="features" className="py-24 bg-card/50 relative border-y border-border">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-8">
               {[
@@ -70,9 +68,9 @@ export default async function LandingPage() {
                   icon: Trophy
                 }
               ].map((feature, i) => (
-                <div key={i} className="group p-8 rounded-3xl border border-white/5 bg-slate-800/30 hover:bg-slate-800/50 hover:border-primary/50 transition-all duration-300">
-                  <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 mb-6 group-hover:scale-110 group-hover:bg-primary transition-all">
-                    <feature.icon className="size-7 text-primary group-hover:text-white" />
+                <div key={i} className="group p-8 rounded-lg border border-border bg-card transition-colors hover:border-primary">
+                  <div className="size-14 rounded-lg bg-muted flex items-center justify-center border border-border mb-6 transition-colors">
+                    <feature.icon className="size-7 text-muted-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
                   <p className="text-slate-400 font-medium leading-relaxed">{feature.description}</p>
@@ -90,7 +88,7 @@ export default async function LandingPage() {
                 <div className="text-slate-400 font-bold uppercase tracking-widest text-sm">Active Jobs</div>
               </div>
               <div>
-                <div className="text-5xl md:text-6xl font-black text-gradient-purple mb-2">98%</div>
+                <div className="text-5xl md:text-6xl font-black text-white mb-2">98%</div>
                 <div className="text-slate-400 font-bold uppercase tracking-widest text-sm">AI Accuracy</div>
               </div>
               <div className="col-span-2 md:col-span-1">
@@ -102,15 +100,15 @@ export default async function LandingPage() {
         </section>
       </main>
 
-      <footer className="bg-[#0F172A] border-t border-[#334155] px-8 py-16 relative z-10">
+      <footer className="bg-[#0B0F19] border-t border-border px-8 py-16 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
             <Link className="flex items-center gap-2 group" href="/">
-              <div className="size-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+              <div className="size-10 rounded-lg bg-primary flex items-center justify-center text-white border border-border">
                 <BriefcaseBusiness className="size-6" />
               </div>
-              <span className="font-bold text-2xl tracking-tight text-white group-hover:text-purple-400 transition-colors">
+              <span className="font-bold text-2xl tracking-tight text-white group-hover:text-foreground transition-colors">
                 NextHire
               </span>
             </Link>
@@ -167,7 +165,7 @@ export default async function LandingPage() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="size-12 rounded-xl bg-[#1E293B] border border-[#334155] flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:scale-110 transition-all duration-300"
+                  className="size-12 rounded-lg bg-card border border-border flex items-center justify-center text-white hover:bg-muted hover:border-white/20 transition-all duration-300"
                 >
                   <social.icon className="size-5" />
                 </a>

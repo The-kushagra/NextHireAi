@@ -30,7 +30,7 @@ export default async function JobApplicantsPage({
           </h1>
           <Badge
             variant="secondary"
-            className="bg-primary/10 text-primary border-primary/20 gap-1"
+            className="gap-1"
           >
             <Sparkles className="size-3" />
             Powered by AI

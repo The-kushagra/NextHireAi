@@ -34,11 +34,11 @@ export function CandidateSummary({ resumeText, jobDescription }: CandidateSummar
   }
 
   return (
-    <Card className="overflow-hidden border-primary/20 shadow-lg">
-      <CardHeader className="bg-primary/5 pb-3">
+    <Card className="overflow-hidden border-border shadow-none">
+      <CardHeader className="bg-card border-b border-border pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Sparkles className="size-5 text-primary animate-pulse" />
+            <Sparkles className="size-5 text-muted-foreground" />
             AI Candidate Summary
           </CardTitle>
           {!summary && (
@@ -87,7 +87,7 @@ export function CandidateSummary({ resumeText, jobDescription }: CandidateSummar
           </div>
         ) : (
           <div className="text-center py-10 space-y-4">
-            <div className="bg-primary/10 size-12 rounded-full flex items-center justify-center mx-auto text-primary">
+            <div className="bg-muted size-12 rounded-lg flex items-center justify-center mx-auto text-muted-foreground">
               <FileText className="size-6" />
             </div>
             <div className="max-w-[280px] mx-auto">

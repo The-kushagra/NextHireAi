@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
 import { applyToJob } from "@/server/actions/applications"
 import { toast } from "sonner"
 import { CheckCircle2, Sparkles, Upload, FileText, X } from "lucide-react"
@@ -88,8 +89,8 @@ export function ApplyModal({ jobListingId, jobTitle }: { jobListingId: string, j
         </DialogTrigger>
         <DialogContent className="sm:max-w-md text-center py-10">
           <div className="flex justify-center mb-4">
-            <div className="size-16 rounded-full bg-green-100 flex items-center justify-center">
-              <CheckCircle2 className="size-10 text-green-600" />
+            <div className="size-16 rounded-lg bg-muted flex items-center justify-center border border-border">
+              <CheckCircle2 className="size-10 text-white" />
             </div>
           </div>
           <DialogTitle className="text-2xl mb-2">Application Sent!</DialogTitle>
@@ -116,7 +117,7 @@ export function ApplyModal({ jobListingId, jobTitle }: { jobListingId: string, j
         <DialogHeader>
           <DialogTitle className="text-2xl flex items-center gap-2">
             Apply for {jobTitle}
-            <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/10">
+            <Badge variant="outline">
               <Sparkles className="size-3 mr-1" />
               AI Powered
             </Badge>
@@ -131,9 +132,9 @@ export function ApplyModal({ jobListingId, jobTitle }: { jobListingId: string, j
                <div className="flex flex-col gap-2">
                   <FormLabel>Upload PDF Resume</FormLabel>
                   {file ? (
-                     <div className="flex items-center justify-between p-3 border rounded-lg bg-primary/5 border-primary/20">
+                     <div className="flex items-center justify-between p-3 border rounded-lg bg-card border-border">
                         <div className="flex items-center gap-2">
-                           <FileText className="size-5 text-primary" />
+                           <FileText className="size-5 text-muted-foreground" />
                            <span className="text-sm font-medium truncate max-w-[200px]">{file.name}</span>
                         </div>
                         <Button variant="ghost" size="icon" onClick={() => setFile(null)}>
@@ -151,13 +152,13 @@ export function ApplyModal({ jobListingId, jobTitle }: { jobListingId: string, j
                              if (f) setFile(f)
                            }}
                         />
-                        <div className="border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-muted/20 group-hover:bg-muted/40 transition-colors">
-                           <Upload className="size-8 text-muted-foreground" />
-                           <div className="text-center">
-                              <p className="text-sm font-medium">Click to upload or drag and drop</p>
-                              <p className="text-xs text-muted-foreground">PDF (MAX. 5MB)</p>
-                           </div>
-                        </div>
+                         <div className="border border-dashed rounded-lg p-8 flex flex-col items-center justify-center gap-3 bg-card border-border transition-colors">
+                            <Upload className="size-8 text-muted-foreground" />
+                            <div className="text-center">
+                               <p className="text-sm font-medium">Click to upload or drag and drop</p>
+                               <p className="text-xs text-muted-foreground">PDF (MAX. 5MB)</p>
+                            </div>
+                         </div>
                      </div>
                   )}
                </div>
@@ -207,10 +208,4 @@ export function ApplyModal({ jobListingId, jobTitle }: { jobListingId: string, j
   )
 }
 
-function Badge({ children, className }: { children: React.ReactNode, className?: string }) {
-    return (
-        <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}>
-            {children}
-        </span>
-    )
-}
+

@@ -62,7 +62,7 @@ export default async function PublicJobsPage({
     <div className="container mx-auto py-16 space-y-12 px-6">
       <div className="flex flex-col gap-6 text-center max-w-2xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
-          Discover Your <span className="text-gradient-purple">Next Role</span>
+          Discover Your <span className="text-primary">Next</span> Role
         </h1>
         <p className="text-lg md:text-xl text-slate-400 font-medium">
           Browse the most elite AI and technology positions from globally recognized companies.
@@ -76,10 +76,10 @@ export default async function PublicJobsPage({
       <div className="grid gap-6 max-w-4xl mx-auto w-full">
         {jobs.map((job) => (
           <Link key={job.id} href={`/jobs/${job.id}`} className="group block">
-            <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-slate-800/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-slate-800 hover:shadow-2xl hover:shadow-primary/10">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-card p-8 transition-colors hover:border-primary">
               <div className="flex flex-col md:flex-row justify-between gap-8 relative z-10">
                 <div className="flex gap-6">
-                  <div className="size-16 rounded-2xl border border-white/10 bg-slate-900 flex items-center justify-center overflow-hidden shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                  <div className="size-16 rounded-lg border border-border bg-[#1F2530] flex items-center justify-center overflow-hidden shrink-0">
                     {job.organizationImageUrl ? (
                        <img src={job.organizationImageUrl} alt={job.organizationName} className="object-cover w-full h-full" />
                     ) : (
@@ -90,19 +90,19 @@ export default async function PublicJobsPage({
                     <div className="flex items-center gap-2">
                        <span className="text-cyan-400 font-black text-xs uppercase tracking-[0.2em]">{job.organizationName}</span>
                     </div>
-                    <h3 className="font-black text-2xl text-white group-hover:text-primary transition-colors">{job.title}</h3>
-                    <div className="flex flex-wrap gap-4 text-xs font-bold text-slate-400 pt-2">
-                       <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5">
-                         <MapPin className="size-3.5 text-primary" />
+                    <h3 className="font-black text-2xl text-white group-hover:text-foreground transition-colors">{job.title}</h3>
+                    <div className="flex flex-wrap gap-4 text-xs font-bold text-muted-foreground pt-2">
+                       <span className="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1F2530] border border-border">
+                         <MapPin className="size-3.5 text-muted-foreground" />
                          {job.locationRequirement}
                        </span>
-                       <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 capitalize">
-                         <Clock className="size-3.5 text-teal-500" />
+                       <span className="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1F2530] border border-border capitalize">
+                         <Clock className="size-3.5 text-muted-foreground" />
                          {job.type}
                        </span>
                        {job.wage && (
-                         <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5">
-                           <DollarSign className="size-3.5 text-emerald-500" />
+                         <span className="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1F2530] border border-border">
+                           <DollarSign className="size-3.5 text-muted-foreground" />
                            {job.wage.toLocaleString()} / {job.wageInterval}
                          </span>
                        )}
@@ -120,11 +120,11 @@ export default async function PublicJobsPage({
         ))}
 
         {jobs.length === 0 && (
-          <div className="text-center py-24 border-2 border-dashed border-white/5 rounded-3xl bg-slate-800/20">
-             <div className="size-20 rounded-2xl bg-slate-800 flex items-center justify-center mx-auto mb-6">
-                <Briefcase className="size-10 text-slate-600" />
+          <div className="text-center py-24 border border-dashed border-border rounded-lg bg-card">
+             <div className="size-20 rounded-lg bg-[#1F2530] flex items-center justify-center mx-auto mb-6">
+                <Briefcase className="size-10 text-muted-foreground" />
              </div>
-             <p className="text-slate-400 font-bold text-xl italic max-w-xs mx-auto">No job opportunities found matching your criteria.</p>
+             <p className="text-muted-foreground font-bold text-xl italic max-w-xs mx-auto">No job opportunities found matching your criteria.</p>
           </div>
         )}
       </div>

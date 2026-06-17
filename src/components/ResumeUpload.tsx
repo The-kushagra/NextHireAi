@@ -52,7 +52,7 @@ export function ResumeUpload({ existingResumeDate }: ResumeUploadProps) {
   const hasExisting = !!existingResumeDate
 
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm space-y-5">
+    <div className="rounded-lg border border-border bg-card p-6 shadow-sm space-y-5">
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-lg font-semibold">My Resume</h3>
@@ -62,8 +62,8 @@ export function ResumeUpload({ existingResumeDate }: ResumeUploadProps) {
               : "Upload your resume to enable AI-powered job matching."}
           </p>
         </div>
-        <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-          <FileCheck className="size-5 text-primary" />
+        <div className="size-10 rounded-lg bg-muted flex items-center justify-center shrink-0">
+          <FileCheck className="size-5 text-muted-foreground" />
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export function ResumeUpload({ existingResumeDate }: ResumeUploadProps) {
           htmlFor="resume-file-input"
           className="flex-1 w-full cursor-pointer"
         >
-          <div className="flex items-center gap-3 rounded-xl border-2 border-dashed px-4 py-3 hover:border-primary/50 hover:bg-accent/50 transition-colors">
+          <div className="flex items-center gap-3 rounded-lg border border-dashed px-4 py-3 hover:border-border hover:bg-muted transition-colors">
             <Upload className="size-4 text-muted-foreground shrink-0" />
             <span className="text-sm text-muted-foreground truncate">
               {file ? file.name : "Choose a PDF file..."}
@@ -94,7 +94,7 @@ export function ResumeUpload({ existingResumeDate }: ResumeUploadProps) {
         <button
           onClick={handleUpload}
           disabled={!file || uploading}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none shrink-0"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#0EA371] disabled:opacity-50 disabled:pointer-events-none shrink-0"
         >
           {uploading ? (
             <>
@@ -116,8 +116,8 @@ export function ResumeUpload({ existingResumeDate }: ResumeUploadProps) {
       </div>
 
       {success && (
-        <div className="rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 px-4 py-3">
-          <p className="text-sm text-emerald-700 dark:text-emerald-400 font-medium">
+        <div className="rounded-lg bg-muted border border-border px-4 py-3">
+          <p className="text-sm text-slate-300 font-medium">
             ✓ Resume uploaded successfully — your job matches will update shortly
           </p>
         </div>
